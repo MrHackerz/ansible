@@ -10,6 +10,23 @@
         ansible_python_interpreter: "{{ ansible_playbook_python }}"
       run_once: true
       
+    - name: Install required packages
+      become: true
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Upgrade pip
+      become: true
+      pip:
+        name: pip
+        state: latest
+
+    - name: Install Paramiko
+      pip:
+        name: paramiko
+        state: present
+      
     - name: Change IP address
       ios_command:
         commands:
