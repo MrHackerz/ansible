@@ -2,9 +2,14 @@
 - name: Change Router Configuration
   hosts: routers
   gather_facts: false
-  connection: local
+  connection: network_cli
 
   tasks:
+    - name: Set Paramiko Python interpreter
+      set_fact:
+        ansible_python_interpreter: "{{ ansible_playbook_python }}"
+      run_once: true
+      
     - name: Change IP address
       ios_command:
         commands:
