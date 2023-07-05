@@ -1,6 +1,6 @@
 ---
 - name: Change Router Configuration
-  hosts: routers
+  hosts: CSR1Kv
   gather_facts: false
   connection: network_cli
 
